@@ -1,8 +1,10 @@
-AutoSSH
-=======
+Ansible Role: AutoSSH
+=====================
 
 An Ansible Role that installs and configures multiple autossh connections, 
 allowing port forwarding from the local server to remote servers via SSH.
+
+Forked from [memiah/ansible-role-autossh](https://github.com/memiah/ansible-role-autossh) to change targeted systems to Debian instead of RedHat.
 
 Requirements
 ------------
