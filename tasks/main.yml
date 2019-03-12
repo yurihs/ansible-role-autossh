@@ -12,7 +12,7 @@
     mode: 0700
 
 - name: Ensure known hosts file exists
-  copy: 
+  copy:
     content: ""
     dest: "{{ autossh_known_hosts_file }}"
     force: no
