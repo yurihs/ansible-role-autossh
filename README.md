@@ -104,9 +104,11 @@ This will create a new service named `autossh-example.service`
 License
 -------
 
-MIT / BSD
+MIT
 
-Author Information
+Authors
 ------------------
 
 This role was created in 2016 by [Memiah Limited](https://github.com/memiah).
+
+Debian adaptation in 2019 by [yurihs](https://github.com/yurihs).
