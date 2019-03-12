@@ -1,0 +1,7 @@
+- name: restart autossh services
+  systemd:
+    name: "{{ item.dest | basename }}"
+    state: restarted
+  when: item.changed  
+  with_items:
+  - "{{ autossh_systemd_service }}"

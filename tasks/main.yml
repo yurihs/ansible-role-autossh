@@ -29,6 +29,7 @@
     mode: 0644
   with_items: "{{ autossh_connections }}"
   register: autossh_systemd_service
+  notify: restart autossh services
 
 - name: Reload systemd manager configuration
   systemd:
@@ -39,6 +40,5 @@
   systemd:
     name: "{{ item.dest | basename }}"
     enabled: yes
-    state: restarted
-  when: autossh_systemd_service.changed and item.dest is defined
+  when: item.dest is defined
   with_items: "{{ autossh_systemd_service.results }}"
