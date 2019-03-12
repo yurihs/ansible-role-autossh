@@ -25,11 +25,10 @@
 - name: Copy autossh services to systemd
   template:
     src: templates/autossh.service.j2
-    dest: "{{ autossh_systemd_dir }}/autossh-{{ item.id | lower | regex_replace('\\s+', '-') | regex_replace('[^a-z0-9-]', '') }}.service"
+    dest: "{{ autossh_systemd_dir }}/autossh-{{ item.id }}.service"
     mode: 0644
   with_items: "{{ autossh_connections }}"
-  register: autossh_systemd_service
-  notify: restart autossh services
+  notify: "Restart autossh services"
 
 - name: Reload systemd manager configuration
   systemd:
@@ -38,7 +37,7 @@
 
 - name: Enable autossh services
   systemd:
-    name: "{{ item.dest | basename }}"
+    name: "{{ item.id }}"
     enabled: yes
   when: item.dest is defined
-  with_items: "{{ autossh_systemd_service.results }}"
+  with_items: "{{ autossh_connections }}"
