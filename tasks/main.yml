@@ -28,6 +28,7 @@
     dest: "{{ autossh_systemd_dir }}/autossh-{{ item.id }}.service"
     mode: 0644
   with_items: "{{ autossh_connections }}"
+  register: autossh_systemd_service
   notify: "Restart autossh services"
 
 - name: Reload systemd manager configuration
