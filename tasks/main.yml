@@ -38,6 +38,6 @@
 
 - name: Enable autossh services
   systemd:
-    name: "{{ item.id }}"
+    name: "autossh-{{ item.id }}.service"
     enabled: yes
   with_items: "{{ autossh_connections }}"
