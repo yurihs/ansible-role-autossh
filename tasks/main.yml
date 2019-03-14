@@ -40,5 +40,4 @@
   systemd:
     name: "{{ item.id }}"
     enabled: yes
-  when: item.dest is defined
   with_items: "{{ autossh_connections }}"
