@@ -15,7 +15,7 @@
   copy:
     content: ""
     dest: "{{ autossh_known_hosts_file }}"
-    force: no
+    force: false
 
 - name: Scan for destination servers' public keys
   shell: ssh-keyscan -p {{ item.port | default(22) }} {{ item.server }} >> {{ autossh_known_hosts_file }}
@@ -29,10 +29,10 @@
     mode: 0644
   with_items: "{{ autossh_connections }}"
   register: autossh_systemd_service
-  notify: "Restart autossh services"
+  notify: restart autossh
 
 - name: Enable autossh services
   systemd:
     name: "autossh-{{ item.id }}.service"
-    enabled: yes
+    enabled: true
   with_items: "{{ autossh_connections }}"

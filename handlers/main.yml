@@ -1,7 +1,8 @@
-- name: "Restart autossh services"
+---
+
+- name: restart autossh
   systemd:
     name: "autossh-{{ item.id }}.service"
     state: restarted
-    daemon-reload: yes
-  with_items:
-  - "{{ autossh_connections }}"
+    daemon-reload: true
+  loop: "{{ autossh_connections }}"
