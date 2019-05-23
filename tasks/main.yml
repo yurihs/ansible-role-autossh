@@ -31,11 +31,6 @@
   register: autossh_systemd_service
   notify: "Restart autossh services"
 
-- name: Reload systemd manager configuration
-  systemd:
-    daemon-reload: yes
-  when: autossh_systemd_service.changed
-
 - name: Enable autossh services
   systemd:
     name: "autossh-{{ item.id }}.service"
