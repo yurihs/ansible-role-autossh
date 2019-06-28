@@ -1,5 +1,7 @@
 # Ansible Role: autossh
 
+[![Ansible Galaxy Badge](https://img.shields.io/ansible/role/41602.svg)](https://galaxy.ansible.com/yurihs/autossh)
+
 - Installs autossh and systemd services to run it and keep SSH tunnels open.
 - Scans for host keys, to avoid host key checking prompts.
 
