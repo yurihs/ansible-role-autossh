@@ -1,9 +1,10 @@
 ---
 
 galaxy_info:
+  role_name: autossh
   author: yurihs
   description: Ansible role for configuring multiple autossh connections
-  license: "MIT"
+  license: MIT
   min_ansible_version: 2.1
   platforms:
     - name: Debian
